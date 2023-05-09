@@ -1,0 +1,32 @@
+{
+  "name": "react-shallow-search",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --sourcemap --format esm,cjs --dts --legacy-output"
+  },
+  "packageManager": "yarn@3.5.1",
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-is": "^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.6",
+    "@types/react-is": "^18.2.0",
+    "react": "^18.2.0",
+    "react-is": "^18.2.0",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4"
+  }
+}
