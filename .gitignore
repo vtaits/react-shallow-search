@@ -5,4 +5,7 @@
 !.yarn/versions
 .pnp.*
 
+node_modules
+
 dist
+docs
