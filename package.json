@@ -1,6 +1,7 @@
 {
   "name": "react-shallow-search",
   "version": "1.0.0",
+  "description": "Test utils for searching elements in the react tree",
   "files": [
     "dist"
   ],
@@ -14,6 +15,9 @@
     }
   },
   "typings": "./dist/index.d.ts",
+  "repository": "git@github.com:vtaits/react-shallow-search.git",
+  "homepage": "https://vtaits.github.io/react-shallow-search/",
+  "author": "Vadim Taits <taizvadim@gmail.com>",
   "scripts": {
     "build": "tsup src/index.ts --sourcemap --format esm,cjs --dts --legacy-output",
     "lint": "eslint src --ext .ts,.tsx",
@@ -58,5 +62,13 @@
     "ts-node@10.9.1": {
       "unplugged": true
     }
-  }
+  },
+  "keywords": [
+    "react",
+    "shallow",
+    "test",
+    "unit",
+    "find",
+    "search"
+  ]
 }

@@ -3,7 +3,7 @@
 [![NPM](https://img.shields.io/npm/v/react-shallow-search.svg)](https://www.npmjs.com/package/react-shallow-search)
 ![dependencies status](https://img.shields.io/librariesio/release/npm/react-shallow-search)
 
-Test utilities for search nodes in the react tree after shallow rendering
+Test utils for searching elements in the react tree
 
 [Api reference](https://vtaits.github.io/react-shallow-search/)
 
@@ -141,7 +141,7 @@ search(
         return element.props.customClassName.split(' ').includes(query.className);
       }
 
-      return defaultGetChildren(element, query);
+      return defaultMatch(element, query);
     },
   },
 );

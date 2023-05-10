@@ -10,6 +10,7 @@ export type QueryType = {
   /**
    * Type of jsx node. E.g.
    *
+   * ```
    * search(<button>Test</button>, {
    *   component: 'button',
    * })
@@ -17,12 +18,14 @@ export type QueryType = {
    * search(<MyComponent>Test</MyComponent>, {
    *   component: MyComponent,
    * })
+   * ```
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component?: string | ComponentType<any>;
   /**
    * Props that the target elements should have
    *
+   * ```
    * search(
    *   <button type="button">
    *     Test
@@ -31,11 +34,13 @@ export type QueryType = {
    *     type: 'button',
    *   },
    * )
+   * ```
    */
   props?: Record<string, unknown>;
   /**
    * Classname that the target elements should have
    *
+   * ```
    * search(
    *   <button
    *     className="foo bar baz"
@@ -46,6 +51,7 @@ export type QueryType = {
    *     className: 'bar',
    *   },
    * )
+   * ```
    */
   className?: string;
 };
@@ -58,6 +64,7 @@ export type ParamsType = {
    * Get children from the element of the exotic component,
    * e.g. other prop for rendering children or render props
    *
+   * ```
    * search(
    *   <ExoticComponent>
    *     {() => (
@@ -81,6 +88,7 @@ export type ParamsType = {
    *     },
    *   },
    * )
+   * ```
    *
    * @param element Target react element
    * @returns List of child nodes
@@ -92,6 +100,7 @@ export type ParamsType = {
   /**
    * Check if the target element is matching for search, e.g.
    *
+   * ```
    * search(
    *   <ComponentWithCustomClassNameProp
    *     customClassName="foo bar baz"
@@ -112,6 +121,7 @@ export type ParamsType = {
    *     },
    *   },
    * )
+   * ```
    * @param element Target react element
    * @param query Current query
    * @returns Is element matching for current query
