@@ -14,7 +14,9 @@
   },
   "typings": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --sourcemap --format esm,cjs --dts --legacy-output"
+    "build": "tsup src/index.ts --sourcemap --format esm,cjs --dts --legacy-output",
+    "test:unit": "ts-node-test src/**/*-test.*",
+    "test": "yarn test:unit"
   },
   "packageManager": "yarn@3.5.1",
   "peerDependencies": {
@@ -22,11 +24,19 @@
     "react-is": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
+    "@types/node": "^20.1.1",
     "@types/react": "^18.2.6",
     "@types/react-is": "^18.2.0",
     "react": "^18.2.0",
     "react-is": "^18.2.0",
+    "ts-node": "^10.9.1",
+    "ts-node-test": "^0.4.1",
     "tsup": "^6.7.0",
     "typescript": "^5.0.4"
+  },
+  "dependenciesMeta": {
+    "ts-node@10.9.1": {
+      "unplugged": true
+    }
   }
 }
