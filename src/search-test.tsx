@@ -225,6 +225,50 @@ describe('child node', () => {
       );
     });
   });
+
+  test('custom `getChildren`', () => {
+    const getChildren = mock.fn(() => []);
+
+    getChildren.mock.mockImplementationOnce(() => [<span />]);
+
+    const element = (
+      <div />
+    );
+
+    const query: QueryType = {
+      component: 'span',
+    };
+
+    assert.strictEqual(
+      search(
+        (
+          <main>
+            {element}
+          </main>
+        ),
+        query,
+        {
+          getChildren,
+        },
+      ).length,
+      1,
+      'only nested node matches',
+    );
+
+    assert.strictEqual(
+      getChildren.mock.calls.length,
+      2,
+      'called for parent node and nested node',
+    );
+
+    assert.notStrictEqual(
+      getChildren.mock.calls[0],
+      [
+        element,
+      ],
+      'called with correct arguments',
+    );
+  });
 });
 
 test('multiple results', () => {
