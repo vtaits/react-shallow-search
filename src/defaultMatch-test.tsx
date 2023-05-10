@@ -15,9 +15,9 @@ describe('component', () => {
     test('match', () => {
       assert.strictEqual(
         defaultMatch(
-          <button />,
+          <main />,
           {
-            component: 'button',
+            component: 'main',
           },
         ),
         true,
@@ -152,7 +152,7 @@ describe('props', () => {
           <div
             title="Title"
             placeholder="Placeholder"
-            about="About"
+            data-about="About"
           />
         ),
         {
@@ -173,7 +173,7 @@ describe('props', () => {
           <div
             title="Title"
             placeholder="Placeholder"
-            about="About"
+            data-about="About"
           />
         ),
         {
@@ -197,7 +197,7 @@ describe('multiple conditions', () => {
             className="foo bar baz"
             title="Title"
             placeholder="Placeholder"
-            about="About"
+            data-about="About"
           />
         ),
         {
