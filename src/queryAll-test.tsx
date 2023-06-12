@@ -5,7 +5,7 @@ import {
   test,
 } from 'node:test';
 
-import { search } from './search';
+import { queryAll } from './queryAll';
 
 import type {
   QueryType,
@@ -15,7 +15,7 @@ describe('root node', () => {
   describe('default match', () => {
     test('match', () => {
       assert.strictEqual(
-        search(
+        queryAll(
           <div />,
           {},
         ).length,
@@ -25,7 +25,7 @@ describe('root node', () => {
 
     test('not match', () => {
       assert.strictEqual(
-        search(
+        queryAll(
           <div />,
           {
             component: 'span',
@@ -50,7 +50,7 @@ describe('root node', () => {
       };
 
       assert.strictEqual(
-        search(
+        queryAll(
           element,
           query,
           {
@@ -82,7 +82,7 @@ describe('root node', () => {
       };
 
       assert.strictEqual(
-        search(
+        queryAll(
           element,
           query,
           {
@@ -107,7 +107,7 @@ describe('child node', () => {
   describe('default match', () => {
     test('match', () => {
       assert.strictEqual(
-        search(
+        queryAll(
           <main>
             <div />
           </main>,
@@ -121,7 +121,7 @@ describe('child node', () => {
 
     test('not match', () => {
       assert.strictEqual(
-        search(
+        queryAll(
           <main>
             <div />
           </main>,
@@ -150,7 +150,7 @@ describe('child node', () => {
       };
 
       assert.strictEqual(
-        search(
+        queryAll(
           (
             <main>
               {element}
@@ -194,7 +194,7 @@ describe('child node', () => {
       };
 
       assert.strictEqual(
-        search(
+        queryAll(
           (
             <main>
               {element}
@@ -240,7 +240,7 @@ describe('child node', () => {
     };
 
     assert.strictEqual(
-      search(
+      queryAll(
         (
           <main>
             {element}
@@ -285,7 +285,7 @@ test('multiple results', () => {
   );
 
   assert.notStrictEqual(
-    search(
+    queryAll(
       (
         <main>
           foo
@@ -330,7 +330,7 @@ test('slice results with limit param', () => {
   );
 
   assert.notStrictEqual(
-    search(
+    queryAll(
       (
         <main>
           {res1}

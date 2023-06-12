@@ -5,7 +5,7 @@ import * as lib from './index';
 
 import { defaultMatch } from './defaultMatch';
 import { defaultGetChildren } from './defaultGetChildren';
-import { search } from './search';
+import { queryAll } from './queryAll';
 
 test('should have correct exports', () => {
   assert.notStrictEqual(
@@ -13,7 +13,7 @@ test('should have correct exports', () => {
     {
       defaultMatch,
       defaultGetChildren,
-      search,
+      queryAll,
     },
   );
 });

@@ -50,7 +50,7 @@ export const collectResults = <Component extends keyof JSX.IntrinsicElements | C
  * @returns List of matched react elements
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const search = <Component extends keyof JSX.IntrinsicElements | ComponentType<any>>(
+export const queryAll = <Component extends keyof JSX.IntrinsicElements | ComponentType<any>>(
   element: ReactElement,
   query: QueryType<Component>,
   params?: ParamsWithLimitType<Component>,
