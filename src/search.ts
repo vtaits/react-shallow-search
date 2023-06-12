@@ -6,7 +6,7 @@ import { defaultMatch } from './defaultMatch';
 import { defaultGetChildren } from './defaultGetChildren';
 
 import type {
-  ParamsType,
+  ParamsWithLimitType,
   QueryType,
 } from './types';
 
@@ -14,18 +14,27 @@ export const collectResults = (
   res: ReactElement[],
   element: ReactElement,
   query: QueryType,
-  params?: ParamsType,
+  params?: ParamsWithLimitType,
 ): void => {
+  const limit = params?.limit;
   const match = params?.match || defaultMatch;
   const getChildren = params?.getChildren || defaultGetChildren;
 
   if (match(element, query)) {
     res.push(element);
+
+    if (res.length === limit) {
+      return;
+    }
   }
 
   const children = getChildren(element);
 
   children.forEach((child) => {
+    if (res.length === limit) {
+      return;
+    }
+
     collectResults(res, child, query, params);
   });
 };
@@ -40,7 +49,7 @@ export const collectResults = (
 export const search = (
   element: ReactElement,
   query: QueryType,
-  params?: ParamsType,
+  params?: ParamsWithLimitType,
 ): ReactElement[] => {
   const res: ReactElement[] = [];
 

@@ -131,3 +131,10 @@ export type ParamsType = {
     query: QueryType,
   ) => boolean;
 };
+
+export type ParamsWithLimitType = ParamsType & {
+  /**
+   * Max number of elements in result
+   */
+  limit?: number | null;
+};

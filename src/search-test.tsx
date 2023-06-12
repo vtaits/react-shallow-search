@@ -309,3 +309,49 @@ test('multiple results', () => {
     ],
   );
 });
+
+test('slice results with limit param', () => {
+  const res1 = (
+    <div
+      className="foo"
+    />
+  );
+
+  const res2 = (
+    <span
+      className="foo"
+    />
+  );
+
+  const notRes3 = (
+    <span
+      className="foo"
+    />
+  );
+
+  assert.notStrictEqual(
+    search(
+      (
+        <main>
+          {res1}
+
+          <div>
+            {res2}
+          </div>
+
+          {notRes3}
+        </main>
+      ),
+      {
+        className: 'foo',
+      },
+      {
+        limit: 2,
+      },
+    ),
+    [
+      res1,
+      res2,
+    ],
+  );
+});
