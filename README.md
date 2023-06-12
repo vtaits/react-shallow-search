@@ -10,7 +10,7 @@ Test utils for searching elements in the react tree
 ```tsx
 import assert from 'node:assert';
 import { createRenderer } from 'react-test-renderer/shallow';
-import { search } from 'react-shallow-search';
+import { get } from 'react-shallow-search';
 
 function MyComponent() {
   return (
@@ -28,9 +28,9 @@ const renderer = createRenderer();
 renderer.render(<MyComponent />);
 const result = renderer.getRenderOutput();
 
-const targetSpan = search(result, {
+const targetSpan = get(result, {
   className: 'target',
-})[0];
+});
 
 assert.strictEqual(targetSpan.type, 'span');
 assert.strictEqual(targetSpan.props.children, 'Test');
@@ -47,9 +47,9 @@ yarn add react-shallow-search react-is --dev
 ### Search by type of react element
 
 ```tsx
-import { search } from 'react-shallow-search';
+import { get } from 'react-shallow-search';
 
-search(
+get(
   <MyComponent>
     Test
   </MyComponent>,
@@ -62,9 +62,9 @@ search(
 ### Search by className
 
 ```tsx
-import { search } from 'react-shallow-search';
+import { get } from 'react-shallow-search';
 
-search(
+get(
   <MyComponent className="foo bar baz">
     Test
   </MyComponent>,
@@ -77,9 +77,9 @@ search(
 ### Search by props
 
 ```tsx
-import { search } from 'react-shallow-search';
+import { get } from 'react-shallow-search';
 
-search(
+get(
   <MyComponent
     foo="bar"
     baz={123}
@@ -98,9 +98,9 @@ search(
 ### Custom attribute with children
 
 ```tsx
-import { defaultGetChildren, search } from 'react-shallow-search';
+import { defaultGetChildren, get } from 'react-shallow-search';
 
-search(
+get(
   <ExoticComponent
     block={(
       <span className="target">
@@ -126,9 +126,9 @@ search(
 ### Custom matching function
 
 ```tsx
-import { defaultMatch, search } from 'react-shallow-search';
+import { defaultMatch, get } from 'react-shallow-search';
 
-search(
+get(
   <ExoticComponent
     customClassName="target"
   />,
@@ -143,6 +143,23 @@ search(
 
       return defaultMatch(element, query);
     },
+  },
+);
+```
+
+### Search for multiple elements
+
+```tsx
+import { getAll } from 'react-shallow-search';
+
+getAll(
+  <div>
+    <div className="foo">Bar</div>
+    <div className="foo">Bar</div>
+    <div className="foo">Bar</div>
+  </div>,
+  {
+    className: 'foo',
   },
 );
 ```
