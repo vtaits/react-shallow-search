@@ -16,14 +16,14 @@ import type {
 export const collectResults = <Component extends keyof JSX.IntrinsicElements | ComponentType<any>>(
   res: ReactElement<ComponentProps<Component>, Component>[],
   element: ReactElement,
-  query: QueryType<Component>,
+  queryParam: QueryType<Component>,
   params?: ParamsWithLimitType<Component>,
 ): void => {
   const limit = params?.limit;
   const match = params?.match || defaultMatch;
   const getChildren = params?.getChildren || defaultGetChildren;
 
-  if (match(element, query)) {
+  if (match(element, queryParam)) {
     res.push(element as ReactElement<ComponentProps<Component>, Component>);
 
     if (res.length === limit) {
@@ -38,7 +38,7 @@ export const collectResults = <Component extends keyof JSX.IntrinsicElements | C
       return;
     }
 
-    collectResults(res, child, query, params);
+    collectResults(res, child, queryParam, params);
   });
 };
 
@@ -52,12 +52,12 @@ export const collectResults = <Component extends keyof JSX.IntrinsicElements | C
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const queryAll = <Component extends keyof JSX.IntrinsicElements | ComponentType<any>>(
   element: ReactElement,
-  query: QueryType<Component>,
+  queryParam: QueryType<Component>,
   params?: ParamsWithLimitType<Component>,
 ): ReactElement<ComponentProps<Component>, Component>[] => {
   const res: ReactElement<ComponentProps<Component>, Component>[] = [];
 
-  collectResults(res, element, query, params);
+  collectResults(res, element, queryParam, params);
 
   return res;
 };

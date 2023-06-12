@@ -136,8 +136,8 @@ export type ParamsType<Component extends keyof JSX.IntrinsicElements | Component
 /**
  * Additional parameters for searching multiple elements inside exotic elements
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ParamsWithLimitType<
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 Component extends keyof JSX.IntrinsicElements | ComponentType<any>,
 > =
   & ParamsType<Component>

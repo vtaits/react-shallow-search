@@ -5,6 +5,9 @@ import * as lib from './index';
 
 import { defaultMatch } from './defaultMatch';
 import { defaultGetChildren } from './defaultGetChildren';
+import { get } from './get';
+import { getAll } from './getAll';
+import { query } from './query';
 import { queryAll } from './queryAll';
 
 test('should have correct exports', () => {
@@ -13,6 +16,9 @@ test('should have correct exports', () => {
     {
       defaultMatch,
       defaultGetChildren,
+      get,
+      getAll,
+      query,
       queryAll,
     },
   );
