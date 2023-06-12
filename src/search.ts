@@ -1,4 +1,6 @@
 import type {
+  ComponentProps,
+  ComponentType,
   ReactElement,
 } from 'react';
 
@@ -10,18 +12,19 @@ import type {
   QueryType,
 } from './types';
 
-export const collectResults = (
-  res: ReactElement[],
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const collectResults = <Component extends keyof JSX.IntrinsicElements | ComponentType<any>>(
+  res: ReactElement<ComponentProps<Component>, Component>[],
   element: ReactElement,
-  query: QueryType,
-  params?: ParamsWithLimitType,
+  query: QueryType<Component>,
+  params?: ParamsWithLimitType<Component>,
 ): void => {
   const limit = params?.limit;
   const match = params?.match || defaultMatch;
   const getChildren = params?.getChildren || defaultGetChildren;
 
   if (match(element, query)) {
-    res.push(element);
+    res.push(element as ReactElement<ComponentProps<Component>, Component>);
 
     if (res.length === limit) {
       return;
@@ -46,12 +49,13 @@ export const collectResults = (
  * @param params Params for search inside elements of exotic components
  * @returns List of matched react elements
  */
-export const search = (
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const search = <Component extends keyof JSX.IntrinsicElements | ComponentType<any>>(
   element: ReactElement,
-  query: QueryType,
-  params?: ParamsWithLimitType,
-): ReactElement[] => {
-  const res: ReactElement[] = [];
+  query: QueryType<Component>,
+  params?: ParamsWithLimitType<Component>,
+): ReactElement<ComponentProps<Component>, Component>[] => {
+  const res: ReactElement<ComponentProps<Component>, Component>[] = [];
 
   collectResults(res, element, query, params);
 

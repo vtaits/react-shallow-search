@@ -1,4 +1,5 @@
 import type {
+  ComponentType,
   ReactElement,
 } from 'react';
 
@@ -12,9 +13,10 @@ import type {
  * @param query Current query
  * @returns Is element matching for current query
  */
-export const defaultMatch = (
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const defaultMatch = <Component extends ComponentType<any> | keyof JSX.IntrinsicElements>(
   element: ReactElement,
-  query: QueryType,
+  query: QueryType<Component>,
 ) => {
   const {
     className,

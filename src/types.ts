@@ -6,7 +6,8 @@ import type {
 /**
  * Parameters for searching for elements
  */
-export type QueryType = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type QueryType<Component extends keyof JSX.IntrinsicElements | ComponentType<any>> = {
   /**
    * Type of jsx node. E.g.
    *
@@ -20,8 +21,7 @@ export type QueryType = {
    * })
    * ```
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  component?: string | ComponentType<any>;
+  component?: Component;
   /**
    * Props that the target elements should have
    *
@@ -59,7 +59,8 @@ export type QueryType = {
 /**
  * Additional parameters for searching inside exotic elements
  */
-export type ParamsType = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ParamsType<Component extends keyof JSX.IntrinsicElements | ComponentType<any>> = {
   /**
    * Get children from the element of the exotic component,
    * e.g. other prop for rendering children or render props
@@ -128,13 +129,21 @@ export type ParamsType = {
    */
   match?: (
     element: ReactElement,
-    query: QueryType,
+    query: QueryType<Component>,
   ) => boolean;
 };
 
-export type ParamsWithLimitType = ParamsType & {
-  /**
-   * Max number of elements in result
-   */
-  limit?: number | null;
-};
+/**
+ * Additional parameters for searching multiple elements inside exotic elements
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ParamsWithLimitType<
+Component extends keyof JSX.IntrinsicElements | ComponentType<any>,
+> =
+  & ParamsType<Component>
+  & {
+    /**
+     * Max number of elements in result
+     */
+    limit?: number | null;
+  };

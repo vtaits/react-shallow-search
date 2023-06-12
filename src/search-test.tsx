@@ -44,7 +44,7 @@ describe('root node', () => {
         <div />
       );
 
-      const query: QueryType = {
+      const query: QueryType<'span'> = {
         component: 'span',
         className: 'foo',
       };
@@ -76,7 +76,7 @@ describe('root node', () => {
         <div />
       );
 
-      const query: QueryType = {
+      const query: QueryType<'span'> = {
         component: 'span',
         className: 'foo',
       };
@@ -144,7 +144,7 @@ describe('child node', () => {
         <div />
       );
 
-      const query: QueryType = {
+      const query: QueryType<'span'> = {
         component: 'span',
         className: 'foo',
       };
@@ -188,7 +188,7 @@ describe('child node', () => {
         <div />
       );
 
-      const query: QueryType = {
+      const query: QueryType<'span'> = {
         component: 'span',
         className: 'foo',
       };
@@ -235,7 +235,7 @@ describe('child node', () => {
       <div />
     );
 
-    const query: QueryType = {
+    const query: QueryType<'span'> = {
       component: 'span',
     };
 
