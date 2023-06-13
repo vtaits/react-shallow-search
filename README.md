@@ -95,6 +95,31 @@ get(
 );
 ```
 
+### Get props of element
+
+```tsx
+import assert from 'node:assert';
+import { getProps } from 'react-shallow-search';
+
+const componentProps = getProps(
+  <MyComponent
+    foo="bar"
+    baz={123}
+    abc="def"
+  >
+    Test
+  </MyComponent>,
+  {
+    props: {
+      foo: 'bar',
+      baz: 123,
+    },
+  },
+);
+
+assert.strictEqual(componentProps.abc, 'def');
+```
+
 ### Custom attribute with children
 
 ```tsx
@@ -163,3 +188,8 @@ getAll(
   },
 );
 ```
+
+### Search for element that can be not rendered
+
+* `get` -> `query`
+* `getAll` -> `queryAll`

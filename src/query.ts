@@ -11,7 +11,7 @@ import type {
 } from './types';
 
 /**
- * Search for single matching element for the query in the rendered react tree
+ * Search for the single matching element for the query in the rendered react tree
  * @param element Target react element
  * @param query Query for search (type of react element, props, className)
  * @param params Params for search inside elements of exotic components

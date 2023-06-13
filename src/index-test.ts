@@ -7,6 +7,7 @@ import { defaultMatch } from './defaultMatch';
 import { defaultGetChildren } from './defaultGetChildren';
 import { get } from './get';
 import { getAll } from './getAll';
+import { getProps } from './getProps';
 import { query } from './query';
 import { queryAll } from './queryAll';
 
@@ -18,6 +19,7 @@ test('should have correct exports', () => {
       defaultGetChildren,
       get,
       getAll,
+      getProps,
       query,
       queryAll,
     },
