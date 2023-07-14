@@ -6,6 +6,19 @@ import {
   isElement,
 } from 'react-is';
 
+const collectChildrenFromArrayItem = (res: ReactElement[], child: ReactNode) => {
+  if (isElement(child)) {
+    res.push(child);
+    return;
+  }
+
+  if (Array.isArray(child)) {
+    (child as ReactNode[]).forEach((subChild) => {
+      collectChildrenFromArrayItem(res, subChild);
+    });
+  }
+};
+
 /**
  * Default getter of children from the react element
  * @param element Target react element
@@ -29,7 +42,13 @@ export const defaultGetChildren = (
   }
 
   if (Array.isArray(children)) {
-    return children.filter((child) => isElement(child)) as ReactElement[];
+    const res: ReactElement[] = [];
+
+    children.forEach((child) => {
+      collectChildrenFromArrayItem(res, child);
+    });
+
+    return res;
   }
 
   return [];

@@ -46,3 +46,26 @@ test('should work with node that has multiple children and filter them', () => {
   assert.strictEqual(result[0].type, 'span');
   assert.strictEqual(result[1].type, 'br');
 });
+
+test('should work with nested arrays', () => {
+  const result = defaultGetChildren(
+    <div>
+      {[
+        [
+          [
+            <span />,
+            'foo',
+          ],
+          <br />,
+          'bar',
+        ],
+      ]}
+      <hr />
+    </div>,
+  );
+
+  assert.strictEqual(result.length, 3);
+  assert.strictEqual(result[0].type, 'span');
+  assert.strictEqual(result[1].type, 'br');
+  assert.strictEqual(result[2].type, 'hr');
+});
