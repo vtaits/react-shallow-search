@@ -1,7 +1,6 @@
-import { type ReactElement } from "react";
+import type { ReactElement } from "react";
 
-import assert from "node:assert";
-import { describe, test } from "node:test";
+import { assert, describe, test } from "vitest";
 
 import { defaultMatch } from "./defaultMatch";
 

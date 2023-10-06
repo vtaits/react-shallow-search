@@ -1,5 +1,4 @@
-import assert from "node:assert";
-import { describe, mock, test } from "node:test";
+import { assert, describe, test, vi } from "vitest";
 
 import { queryAll } from "./queryAll";
 
@@ -23,7 +22,7 @@ describe("root node", () => {
 
 	describe("custom match", () => {
 		test("match", () => {
-			const match = mock.fn(() => true);
+			const match = vi.fn().mockReturnValue(true);
 
 			const element = <div />;
 
@@ -43,7 +42,7 @@ describe("root node", () => {
 		});
 
 		test("not match", () => {
-			const match = mock.fn(() => false);
+			const match = vi.fn().mockReturnValue(false);
 
 			const element = <div />;
 
@@ -97,9 +96,7 @@ describe("child node", () => {
 
 	describe("custom match", () => {
 		test("match", () => {
-			const match = mock.fn(() => false);
-
-			match.mock.mockImplementationOnce(() => true);
+			const match = vi.fn().mockReturnValue(false).mockReturnValueOnce(true);
 
 			const element = <div />;
 
@@ -130,7 +127,7 @@ describe("child node", () => {
 		});
 
 		test("not match", () => {
-			const match = mock.fn(() => false);
+			const match = vi.fn().mockReturnValue(false);
 
 			const element = <div />;
 
@@ -162,9 +159,10 @@ describe("child node", () => {
 	});
 
 	test("custom `getChildren`", () => {
-		const getChildren = mock.fn(() => []);
-
-		getChildren.mock.mockImplementationOnce(() => [<span />]);
+		const getChildren = vi
+			.fn()
+			.mockReturnValue([])
+			.mockReturnValueOnce([<span />]);
 
 		const element = <div />;
 

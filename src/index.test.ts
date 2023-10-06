@@ -1,5 +1,4 @@
-import assert from "node:assert";
-import { test } from "node:test";
+import { assert, test } from "vitest";
 
 import * as lib from "./index";
 
