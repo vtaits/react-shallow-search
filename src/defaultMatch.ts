@@ -1,11 +1,6 @@
-import type {
-  ComponentType,
-  ReactElement,
-} from 'react';
+import type { ComponentType, ReactElement } from "react";
 
-import type {
-  QueryType,
-} from './types';
+import type { QueryType } from "./types";
 
 /**
  * Default function that checks if the target element is matching for search, e.g.
@@ -13,43 +8,39 @@ import type {
  * @param query Current query
  * @returns Is element matching for current query
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const defaultMatch = <Component extends ComponentType<any> | keyof JSX.IntrinsicElements>(
-  element: ReactElement,
-  query: QueryType<Component>,
+export const defaultMatch = <
+	// biome-ignore lint/suspicious/noExplicitAny: supports any component
+	Component extends ComponentType<any> | keyof JSX.IntrinsicElements,
+>(
+	element: ReactElement,
+	query: QueryType<Component>,
 ) => {
-  const {
-    className,
-    component,
-    props,
-  } = query;
+	const { className, component, props } = query;
 
-  if (component && component !== element.type) {
-    return false;
-  }
+	if (component && component !== element.type) {
+		return false;
+	}
 
-  const elementProps = element.props as Record<string, unknown>;
+	const elementProps = element.props as Record<string, unknown>;
 
-  if (className) {
-    const {
-      className: classNameProp,
-    } = elementProps;
+	if (className) {
+		const { className: classNameProp } = elementProps;
 
-    if (!classNameProp || typeof classNameProp !== 'string') {
-      return false;
-    }
+		if (!classNameProp || typeof classNameProp !== "string") {
+			return false;
+		}
 
-    if (!classNameProp.split(' ').includes(className)) {
-      return false;
-    }
-  }
+		if (!classNameProp.split(" ").includes(className)) {
+			return false;
+		}
+	}
 
-  if (
-    props
-    && Object.entries(props).some(([key, value]) => elementProps[key] !== value)
-  ) {
-    return false;
-  }
+	if (
+		props &&
+		Object.entries(props).some(([key, value]) => elementProps[key] !== value)
+	) {
+		return false;
+	}
 
-  return true;
+	return true;
 };
