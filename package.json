@@ -1,6 +1,6 @@
 {
   "name": "react-shallow-search",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "Test utils for searching elements in the react tree",
   "files": [
     "dist"
