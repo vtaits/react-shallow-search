@@ -1,4 +1,4 @@
-import type { ComponentType, ReactElement } from "react";
+import type { ComponentProps, ComponentType, ReactElement } from "react";
 
 /**
  * Parameters for searching for elements
@@ -140,4 +140,15 @@ export type ParamsWithLimitType<
 	 * Max number of elements in result
 	 */
 	limit?: number | null;
+};
+
+export type AccessorsType<
+	// biome-ignore lint/suspicious/noExplicitAny: supports any component
+	Component extends keyof JSX.IntrinsicElements | ComponentType<any>,
+> = {
+	get: () => ReactElement<ComponentProps<Component>, Component>;
+	getProps: () => ComponentProps<Component>;
+	getAll: () => ReactElement<ComponentProps<Component>, Component>[];
+	query: () => ReactElement<ComponentProps<Component>, Component> | null;
+	queryAll: () => ReactElement<ComponentProps<Component>, Component>[];
 };

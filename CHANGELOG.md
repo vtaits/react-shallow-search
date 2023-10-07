@@ -1,3 +1,9 @@
+## 2.2.0 (7 oct 2023)
+
+### New features
+
+* Added `createAccessors` function
+
 ## 2.1.1 (14 jul 2023)
 
 ### Bugfix

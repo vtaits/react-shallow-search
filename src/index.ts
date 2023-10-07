@@ -1,3 +1,4 @@
+export { createAccessors } from "./createAccessors";
 export { defaultMatch } from "./defaultMatch";
 export { defaultGetChildren } from "./defaultGetChildren";
 export { get } from "./get";

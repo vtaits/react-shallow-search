@@ -2,6 +2,7 @@ import { assert, test } from "vitest";
 
 import * as lib from "./index";
 
+import { createAccessors } from "./createAccessors";
 import { defaultGetChildren } from "./defaultGetChildren";
 import { defaultMatch } from "./defaultMatch";
 import { get } from "./get";
@@ -12,6 +13,7 @@ import { queryAll } from "./queryAll";
 
 test("should have correct exports", () => {
 	assert.notStrictEqual(lib, {
+		createAccessors,
 		defaultMatch,
 		defaultGetChildren,
 		get,
