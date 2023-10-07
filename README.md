@@ -193,3 +193,26 @@ getAll(
 
 * `get` -> `query`
 * `getAll` -> `queryAll`
+
+### Create an object of utilities
+
+```tsx
+import { createAccessors } from 'react-shallow-search';
+
+const {
+  get,
+  getProps,
+  getAll,
+  query,
+  queryAll,
+} = createAccessors(
+  <div>
+    {condition && (
+      <div className="foo">Bar</div>
+    )}
+  </div>,
+  {
+    className: 'foo',
+  },
+);
+```
